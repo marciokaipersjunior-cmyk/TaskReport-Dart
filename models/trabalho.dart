@@ -1,6 +1,7 @@
+//* Classe pai
 class ItemTrabalho {
-  int id;
-  String titulo;
+  final int id;
+  final String titulo;
 
   ItemTrabalho({required this.id, required this.titulo});
 
