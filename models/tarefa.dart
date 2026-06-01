@@ -1,6 +1,6 @@
-class Tarefa {
-  int id;
-  String titulo;
+import 'trabalho.dart';
+
+class Tarefa extends ItemTrabalho {
   String responsavel;
   String status;
   String prioridade;
@@ -8,14 +8,14 @@ class Tarefa {
   int horas;
 
   Tarefa({
-    required this.id,
-    required this.titulo,
+    required int id,
+    required String titulo,
     required this.responsavel,
     required this.status,
     required this.prioridade,
     required this.valor,
     required this.horas,
-  });
+  }) : super(id: id, titulo: titulo);
 
   factory Tarefa.fromMap(Map<String, dynamic> dados) {
     return Tarefa(
@@ -39,6 +39,7 @@ class Tarefa {
     if (texto.isEmpty) {
       return padrao;
     }
+
     return texto;
   }
 
@@ -59,6 +60,12 @@ class Tarefa {
     if (horas == null) {
       return 0;
     }
+
     return int.tryParse(horas.toString()) ?? 0;
+  }
+
+  @override
+  void exibirResumo() {
+    print('Tarefa $id - $titulo | Status: $status | Valor: R\$ $valor');
   }
 }
